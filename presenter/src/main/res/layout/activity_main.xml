@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginBottom="30dp"
+            android:text="Local에 저장된 값"/>
+
+        <TextView
+            android:id="@+id/label_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:layout_marginBottom="30dp"
+            android:text="---"/>
+
+        <EditText
+            android:id="@+id/input_box"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"/>
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="저장"/>
+
+        <Button
+            android:id="@+id/button_load"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="불러오기"/>
+
+        <Button
+            android:id="@+id/button_start"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="50dp"
+            android:textSize="16sp"
+            android:backgroundTint="#990000"
+            android:text="Web으로 저장 코드 보기"/>
+    </LinearLayout>
+</layout>
+
+
+
+
