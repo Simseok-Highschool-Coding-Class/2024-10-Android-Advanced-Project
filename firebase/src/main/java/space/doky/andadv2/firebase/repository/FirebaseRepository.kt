@@ -8,23 +8,24 @@ import kotlinx.coroutines.flow.callbackFlow
 import space.doky.andadv2.domain.output.FirebaseInterface
 import space.doky.andadv2.firebase.datasource.FirebaseManager
 import space.doky.andadv2.util.AppLog
+import space.doky.andadv2.util.AppPolicy.FIREBASE_APP_ID
 import javax.inject.Inject
 
 class FirebaseRepository @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val firebaseManager: FirebaseManager
 ) : FirebaseInterface {
     private var session: Flow<String>? = null
 
-    override suspend fun start(): Flow<String> {
+    // TODO: 인터넷이 안될 때 처리
 
-        AppLog.e("============", "start", "session: $session")
+    override suspend fun start(): Flow<String> {
+        AppLog.e(TAG, "start", "session: $session")
 
         session?.run {
             return this
         }
 
-        firebaseManager.init(APP_ID)
+        firebaseManager.init(FIREBASE_APP_ID)
         return callbackFlow<String> {
             val listener = { value: String ->
                 trySend(value)
@@ -39,7 +40,7 @@ class FirebaseRepository @Inject constructor(
     }
 
     override fun stop() {
-        AppLog.e("============", "stop", "session: $session")
+        AppLog.e(TAG, "stop", "session: $session")
         firebaseManager.stop()
         session = null
     }
@@ -49,7 +50,6 @@ class FirebaseRepository @Inject constructor(
     }
 
     companion object {
-        const val APP_ID = "20101"
         val TAG = FirebaseRepository::class.java.simpleName
     }
 }
